@@ -58,8 +58,6 @@ jupyterlab==3.4.3
 jupyterlab-pygments==0.2.2
 jupyterlab-server==2.14.0
 jupyterlab-widgets==1.1.1
-keras==2.9.0
-Keras-Preprocessing==1.1.2
 kiwisolver @ file:///opt/conda/conda-bld/kiwisolver_1653292039266/work
 libclang==14.0.1
 Markdown==3.3.7
@@ -119,12 +117,6 @@ sniffio==1.2.0
 soupsieve==2.3.2.post1
 stack-data==0.3.0
 tenacity==8.0.1
-tensorboard==2.9.1
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.9.1
-tensorflow-estimator==2.9.0
-tensorflow-io-gcs-filesystem==0.26.0
 termcolor==1.1.0
 terminado==0.15.0
 threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
