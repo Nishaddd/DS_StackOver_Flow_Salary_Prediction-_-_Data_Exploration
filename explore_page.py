@@ -1,16 +1,11 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+# import plotly.graph_objects as go
+from wordcloud import WordCloud
+import seaborn as sns
+import plotly.express as px
 
-
-def shorten_categories(cat,cut_off):
-    cat_map = {}
-    for i in range(len(cat)):
-        if cat.values[i] >= cut_off:
-            cat_map[cat.index[i]] = cat.index[i]
-        else:
-            cat_map[cat.index[i]] = "other"
-    return cat_map
 
 def clean_exp(x):
     if x == 'Less than 1 year':
@@ -27,6 +22,15 @@ def clean_edu (x):
     if "Professional degree" in x or "doctoral degree" in x :
         return "Post grad"
     return "Less than a bachelors"
+
+def shorten_categories(cat,cut_off):
+    cat_map = {}
+    for i in range(len(cat)):
+        if cat.values[i] >= cut_off:
+            cat_map[cat.index[i]] = cat.index[i]
+        else:
+            cat_map[cat.index[i]] = "other"
+    return cat_map
 
 
 @st.cache
@@ -45,9 +49,18 @@ def load_data():
     df = df[df["Country"] != "other"]
     df.YearsCodePro = df.YearsCodePro.apply(clean_exp)
     df.EdLevel = df.EdLevel.apply(clean_edu)
+
     return df
 
+@st.cache
+def load_data1():
+    df1 = pd.read_csv("clean_df.csv")
+    return df1
+
+
 df  = load_data()
+df1 = load_data1()
+
 
 def show_explore():
     st.title("Explore Software Engineer Salaries")
@@ -67,8 +80,8 @@ def show_explore():
 
     st.pyplot(fig1)
 
-    st.write("""### 
-    Mean Salary based on country""")
+    st.write("""
+    ### Mean Salary based on country""")
 
     data= df.groupby(['Country'])["Salary"].mean().sort_values()
     st.bar_chart(data)
@@ -80,20 +93,110 @@ def show_explore():
     data = df.groupby(['YearsCodePro'])["Salary"].mean().sort_values()
     st.line_chart(data)
 
+    st.title("Explore 2018,2019,2020 and 2021 data from Stack-Overflow")
+
+    st.write("""### Salary US$ vs Country
+    
+    
+    """)
+    df11 = df1.copy()
+    country_map = shorten_categories(df1.Country.value_counts(), 1200)
+    df11['Country'] = df11['Country'].map(country_map)
+
+    fig, ax = plt.subplots(1, 1, figsize=(12, 7))
+    df11.boxplot('salary', 'Country', ax=ax, )
+    plt.suptitle("Salary US$ vs Country")
+    plt.ylabel("Salary in USD")
+    ax.set_ylim(0, 200000)
+    ax.set_xlim()
+    plt.yticks(rotation=90)
+    plt.xticks(rotation=90)
+    st.pyplot(fig)
+
+    st.write("""### Mean Salary for variaus Sexual orientations""")
+
+    sexuality_dist = df1.groupby(['Sexuality'], as_index=False).agg({'salary': pd.Series.mean})
+    fig = px.pie(data_frame=sexuality_dist, names='Sexuality', values="salary",
+           title="Mean Salary for various Sexual orientations")
+    st.plotly_chart(fig)
+
+    st.write("""### Number of users across sexual orientations""")
 
 
+    fig = px.pie(names=df1["Sexuality"].value_counts().index, values=df1["Sexuality"].value_counts().values,
+           title="Number of users across sexual orientations")
+    st.plotly_chart(fig)
 
+    st.write("""### Mean Salary for Age groups""")
 
+    age_dist = df1.groupby(['Age'], as_index=False).agg({'salary': pd.Series.mean})
+    fig = px.pie(data_frame=age_dist, names='Age', values="salary", title="Mean Salary for Age groups")
+    st.plotly_chart(fig)
 
+    st.write("""### Mean Salaries for different Education levels for all countries""")
+    d = df11.groupby(['Country', 'EdLevel'],
+                     as_index=False).agg({'salary': pd.Series.mean})
+    d.sort_values(by='salary', ascending=False, inplace=True)
+    fig = px.bar(x=d.salary,
+                   y=d.Country,
+                   color=d.EdLevel,
+                   orientation="h",
+                   title="Mean Salaries for different Education levels for all countries")
 
+    fig.update_layout(xaxis_title='Mean salary in USD',
+                        yaxis_title='Country')
+    st.plotly_chart(fig)
+    #
+    st.write("""### Mean Salaries for all Genders with different Employment status""")
+    d = df1.groupby(['Gender', 'Employment'],
+                    as_index=False).agg({'salary': pd.Series.mean})
+    d.sort_values(by='salary', ascending=False, inplace=True)
+    fig = px.bar(x=d.salary,
+                   y=d.Gender,
+                   color=d.Employment,
+                   orientation="h",
+                   title="Mean Salaries for all Genders with different Employment status")
 
+    fig.update_layout(xaxis_title='Mean salary in USD',
+                        yaxis_title='Gender spectrum')
+    st.plotly_chart(fig)
+    #
+    st.write("""### Number of users across Gender spectrum""")
+    fig =px.pie(names= df1["Gender"].value_counts().index,values = df1["Gender"].value_counts().values,labels=df1["Gender"].value_counts().index,title = "Number of users across Gender spectrum")
+    st.plotly_chart(fig)
+    #
 
+    st.write("""### Mean Salary for Age groups""")
+    salary_mean = df1.groupby(['year'], as_index=False).agg({'salary': pd.Series.mean})
+    fig =px.pie(data_frame =salary_mean,names= 'year',values = "salary",title = "Mean Salary for years 2018 -2021")
+    st.plotly_chart(fig)
+    #
 
+    st.write("""###
+     
+                    Word Cloud of Languages that users have to use currently
+     
+     """)
 
+    ##Wordcloud
+    have_text = " ".join(df1['lang_have'])
+    want_text = " ".join(df1['lang_want'])
+    word_cloud1 = WordCloud(collocations=False, background_color='white').generate(have_text)
+    word_cloud2 = WordCloud(collocations=False, background_color='white').generate(want_text)
+    fig, ax = plt.subplots(figsize=(12, 8))
+    ax.imshow(word_cloud1)
+    plt.axis("off")
+    st.pyplot(fig)
 
-
-
-
+    st.write("""### 
+    
+                    Word Cloud of Languages the users want to use in the future
+    
+    """)
+    fig, ax = plt.subplots(figsize=(12, 8))
+    ax.imshow(word_cloud2)
+    plt.axis("off")
+    st.pyplot(fig)
 
 
 
