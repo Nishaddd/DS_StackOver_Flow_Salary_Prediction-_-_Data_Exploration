@@ -10,7 +10,6 @@ Babel==2.10.3
 backcall==0.2.0
 beautifulsoup4==4.11.1
 bleach==5.0.1
-Bottleneck @ file:///tmp/build/80754af9/bottleneck_1648028898966/work
 Brotli==1.0.9
 cachetools==5.2.0
 certifi @ file:///opt/conda/conda-bld/certifi_1655968806487/work/certifi
