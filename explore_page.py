@@ -103,34 +103,25 @@ def show_explore():
     country_map = shorten_categories(df1.Country.value_counts(), 1200)
     df11['Country'] = df11['Country'].map(country_map)
 
-    fig, ax = plt.subplots(1, 1, figsize=(12, 7))
-    df11.boxplot('salary', 'Country', ax=ax, )
-    plt.suptitle("Salary US$ vs Country")
-    plt.ylabel("Salary in USD")
-    ax.set_ylim(0, 200000)
-    ax.set_xlim()
-    plt.yticks(rotation=90)
-    plt.xticks(rotation=90)
-    st.pyplot(fig)
+    fig = px.box(df11,x='Country',y='salary')
+    st.plotly_chart(fig)
 
-    st.write("""### Mean Salary for variaus Sexual orientations""")
+    st.write("""### Mean Salary for various Sexual orientations""")
 
     sexuality_dist = df1.groupby(['Sexuality'], as_index=False).agg({'salary': pd.Series.mean})
-    fig = px.pie(data_frame=sexuality_dist, names='Sexuality', values="salary",
-           title="Mean Salary for various Sexual orientations")
+    fig = px.pie(data_frame=sexuality_dist, names='Sexuality', values="salary")
     st.plotly_chart(fig)
 
     st.write("""### Number of users across sexual orientations""")
 
 
-    fig = px.pie(names=df1["Sexuality"].value_counts().index, values=df1["Sexuality"].value_counts().values,
-           title="Number of users across sexual orientations")
+    fig = px.pie(names=df1["Sexuality"].value_counts().index, values=df1["Sexuality"].value_counts().values)
     st.plotly_chart(fig)
 
     st.write("""### Mean Salary for Age groups""")
 
     age_dist = df1.groupby(['Age'], as_index=False).agg({'salary': pd.Series.mean})
-    fig = px.pie(data_frame=age_dist, names='Age', values="salary", title="Mean Salary for Age groups")
+    fig = px.pie(data_frame=age_dist, names='Age', values="salary")
     st.plotly_chart(fig)
 
     st.write("""### Mean Salaries for different Education levels for all countries""")
@@ -140,8 +131,7 @@ def show_explore():
     fig = px.bar(x=d.salary,
                    y=d.Country,
                    color=d.EdLevel,
-                   orientation="h",
-                   title="Mean Salaries for different Education levels for all countries")
+                   orientation="h")
 
     fig.update_layout(xaxis_title='Mean salary in USD',
                         yaxis_title='Country')
@@ -154,27 +144,24 @@ def show_explore():
     fig = px.bar(x=d.salary,
                    y=d.Gender,
                    color=d.Employment,
-                   orientation="h",
-                   title="Mean Salaries for all Genders with different Employment status")
+                   orientation="h")
 
     fig.update_layout(xaxis_title='Mean salary in USD',
                         yaxis_title='Gender spectrum')
     st.plotly_chart(fig)
     #
     st.write("""### Number of users across Gender spectrum""")
-    fig =px.pie(names= df1["Gender"].value_counts().index,values = df1["Gender"].value_counts().values,labels=df1["Gender"].value_counts().index,title = "Number of users across Gender spectrum")
+    fig =px.pie(names= df1["Gender"].value_counts().index,values = df1["Gender"].value_counts().values,labels=df1["Gender"].value_counts().index)
     st.plotly_chart(fig)
     #
 
     st.write("""### Mean Salary for Age groups""")
     salary_mean = df1.groupby(['year'], as_index=False).agg({'salary': pd.Series.mean})
-    fig =px.pie(data_frame =salary_mean,names= 'year',values = "salary",title = "Mean Salary for years 2018 -2021")
+    fig =px.pie(data_frame =salary_mean,names= 'year',values = "salary")
     st.plotly_chart(fig)
     #
 
-    st.write("""###
-     
-                    Word Cloud of Languages that users have to use currently
+    st.write("""### Word Cloud of Languages that users have to use currently
      
      """)
 
@@ -188,9 +175,7 @@ def show_explore():
     plt.axis("off")
     st.pyplot(fig)
 
-    st.write("""### 
-    
-                    Word Cloud of Languages the users want to use in the future
+    st.write("""### Word Cloud of Languages the users want to use in the future
     
     """)
     fig, ax = plt.subplots(figsize=(12, 8))

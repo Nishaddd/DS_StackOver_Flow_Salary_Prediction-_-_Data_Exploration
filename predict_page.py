@@ -15,7 +15,8 @@ le_c = data["le_country"]
 le_e =data["le_edu"]
 
 def show_predict():
-    st.title ("Software Developer Salary Prediction-2021")
+    st.title ("Software Developer Salary Prediction"
+              "-Based on 2021 Stack Overflow Data")
 
     st.write("""## We need some information to predict the salary""")
 
@@ -52,5 +53,19 @@ def show_predict():
         x[:,1] = le_e.transform(x[:,1])
         x=x.astype(float)
 
-        salary = (regressor_loaded.predict(x))*78.07
-        st.subheader(f"estimated salary converted rupees : {salary[0]:.2f}")
+        salary = (regressor_loaded.predict(x))
+        st.subheader(f"Estimated yearly salary : {salary[0]:.2f}$")
+
+        try :
+            from api_request import curr_converter
+
+            rate,status_code = curr_converter()
+            if status_code == 200:
+                sal = salary[0] * rate
+                st.subheader(f"Salary converted to INR as of today : {sal:.2f}")
+
+            else :
+                pass
+        except :
+            pass
+
