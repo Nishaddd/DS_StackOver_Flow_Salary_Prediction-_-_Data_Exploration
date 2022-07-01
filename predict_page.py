@@ -54,7 +54,7 @@ def show_predict():
         x=x.astype(float)
 
         salary = (regressor_loaded.predict(x))
-        st.subheader(f"Estimated yearly salary : {salary[0]:.2f}$")
+        st.subheader(f"Estimated yearly salary : $ {salary[0]:.2f}")
 
         try :
             from api_request import curr_converter
