@@ -161,7 +161,7 @@ def show_explore():
     st.plotly_chart(fig)
     #
 
-    st.write("""### Word Cloud of Languages that users have to use currently
+    st.write("""### Word Cloud of Languages that the users have to use currently
      
      """)
 
@@ -175,7 +175,7 @@ def show_explore():
     plt.axis("off")
     st.pyplot(fig)
 
-    st.write("""### Word Cloud of Languages the users want to use in the future
+    st.write("""### Word Cloud of Languages that the users want to use in the future
     
     """)
     fig, ax = plt.subplots(figsize=(12, 8))
