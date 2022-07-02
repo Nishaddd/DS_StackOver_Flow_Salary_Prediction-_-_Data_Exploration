@@ -71,7 +71,7 @@ I tried four different models:
 *	**Linear Regression**
 *	**Decision Trees**
 *	**Random Forest**
-*       **XGBoost**
+* **XGBoost**
 
 ## Model performance tuned after GridSearchCV
 The Random Forest model outperformed the other approaches on the test and validation sets.
@@ -81,5 +81,5 @@ The Random Forest model outperformed the other approaches on the test and valida
 
 ## Productionization and Deployment
 In this step, I built a Streamlit dashboard that was hosted on a Heroku webserver by following along with the tutorial in the reference section above.
-###Predict page - The dashboard takes inputs from client and outputs predicted salary based on machine learning model used.
-###Explore page - This page showcases all the objects created using data visualization modules which are interactive and informative.
+Predict page - The dashboard takes inputs from client and outputs predicted salary based on machine learning model used.
+Explore page - This page showcases all the objects created using data visualization modules which are interactive and informative.
