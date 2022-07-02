@@ -2,7 +2,7 @@
 Working with Stack overflow survey data and building a simple salary prediction model and using data for exploration and visualization to gain insights into the data.
 
 # Software Engineer Salary Estimator & Data Visualization: Project Overview
-* Created a tool that estimates Software Engineer salaries (MAE ~ $ 27K) to help Software Engineers negotiate their income based on  various factors
+* Created a tool that estimates Software Engineer salaries (MSE ~ $ 27.7K) to help Software Engineers negotiate their income based on  various factors
   when they get a job.
 * Downloaded data sets from surevey data on Stack-Overflow website for the years 2018,2019,2020 & 2021.
 ## Dataset 1 - Prediction Page
@@ -34,9 +34,14 @@ Working with Stack overflow survey data and building a simple salary prediction 
 **Flask Productionization:** https://towardsdatascience.com/productionize-a-machine-learning-model-with-flask-and-heroku-8201260503d2
 **Youtube video-STREAMLIT app and machine learning model:** https://www.youtube.com/watch?v=xl0N7tHiwlw
 **Youtube video-Heroku deployment:** https://www.youtube.com/watch?v=nJHrSvYxzjE
+Dataset 1 that contains data from 2021. This data set was used for model building.
+You may find the dataset with the name surver_results_public.csv
+
+Dataset 2 that contains data from 2018,2019,2020 and 2021. This data set was used for Data visualization on the Explore page.
+You may find the dataset with the name clean_df.csv
 
 
-## Data Cleaning - Dataset 1
+## Data Cleaning -
 After downloading and reading the datasets, I needed to clean it up so that it was usable for our model. I made the following changes and created the following variables:
 
 *	Parsed numeric data out of salary
@@ -49,6 +54,32 @@ After downloading and reading the datasets, I needed to clean it up so that it w
 
 
 ## EDA
-
+Some snippets from the explore page on the Heroku cloud platform.
 
 ![alt text](pie.png "Plotly Pie chart")
+![alt text](boxplot.png "Boxplot")
+![alt text](sunburst.png "Sunburt")
+
+
+## Model Building - Dataset 1
+
+First, I transformed the categorical variables using. I also split the data into train and tests sets with a test size of 25%.   
+
+I tried three different models and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret and outliers aren’t particularly bad in for this type of model.   
+
+I tried four different models:
+*	**Linear Regression**
+*	**Decision Trees**
+*	**Random Forest**
+*       **XGBoost**
+
+## Model performance tuned after GridSearchCV
+The Random Forest model outperformed the other approaches on the test and validation sets.
+*	**Random Forest** : MSE = 27.73K
+*	**Decision Tree**: MSE = 28.40K
+*	**XGBoost Regression**: MSE = 28K
+
+## Productionization and Deployment
+In this step, I built a Streamlit dashboard that was hosted on a Heroku webserver by following along with the tutorial in the reference section above.
+###Predict page - The dashboard takes inputs from client and outputs predicted salary based on machine learning model used.
+###Explore page - This page showcases all the objects created using data visualization modules which are interactive and informative.
