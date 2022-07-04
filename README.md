@@ -2,14 +2,15 @@
 Working with Stack overflow survey data and building a simple salary prediction model and using data for exploration and visualization to gain insights into the data.
 
 # Software Engineer Salary Estimator & Data Visualization: Project Overview
-* Created a tool that estimates Software Engineer salaries (MSE ~ $ 27.7K) to help Software Engineers negotiate their income based on  various factors
-  when they get a job.
+* Created a tool that estimates Software Engineer salaries (MSE ~ $ 27.7K) to help Software Engineers negotiate their income based on various factors
+  when they find a job.
 * Downloaded data sets from surevey data on Stack-Overflow website for the years 2018,2019,2020 & 2021.
 ## Dataset 1 - Prediction Page
 * Used the 2021 dataset to build the predictor model, since that would yield the most relevant results in terms of salary.
 * Kept Years of experience, country and education level as final features for the model.
 * Label encoded above features after cleaning text and numerical values.
 * Optimized Linear,Decision Trees,Random Forest Regressor and XGBoost using GridsearchCV to reach the best model.
+* used forex-python to convert the salary ouput to suit the desired currency selected by the client.
 * Built a client facing API using Streamlit.
 * Deployed the API on Heroku cloud platform.
 ## Dataset 2 - Explore Page
@@ -27,6 +28,7 @@ Working with Stack overflow survey data and building a simple salary prediction 
 
 ## Code and Resources Used
 **Python Version:** 3.9  
+**Data**:https://insights.stackoverflow.com/survey
 **Packages:** pandas, numpy, sklearn, matplotlib,plotly, seaborn,streamlit, json, pickle  
 **For Web Framework Requirements:**  ```pip install -r requirements.txt```  
 **Salary predictor Github:** https://github.com/python-engineer/ml-app-salaryprediction
@@ -71,7 +73,7 @@ I tried four different models:
 *	**Linear Regression**
 *	**Decision Trees**
 *	**Random Forest**
-* **XGBoost**
+*   **XGBoost**
 
 ## Model performance tuned after GridSearchCV
 The Random Forest model outperformed the other approaches on the test and validation sets.
@@ -80,6 +82,6 @@ The Random Forest model outperformed the other approaches on the test and valida
 *	**XGBoost Regression**: MSE = 28K
 
 ## Productionization and Deployment
-In this step, I built a Streamlit dashboard that was hosted on a Heroku webserver by following along with the tutorial in the reference section above.
+In this step, I built a Streamlit dashboard based on Flask that was hosted on a Heroku webserver by following along with the tutorial in the resources section above.
 Predict page - The dashboard takes inputs from client and outputs predicted salary based on machine learning model used.
 Explore page - This page showcases all the objects created using data visualization modules which are interactive and informative.
