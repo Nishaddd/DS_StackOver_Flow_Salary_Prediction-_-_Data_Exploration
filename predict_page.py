@@ -1,9 +1,20 @@
 import streamlit as st
 import numpy as np
 import pickle
-from curr_exchange import curr_exchanger
-import locale
 
+from forex_python.converter import CurrencyRates,CurrencyCodes
+
+
+
+def curr_exchanger(source_curr,dest_curr):
+    c = CurrencyRates()
+    rate = c.get_rate(source_curr,dest_curr)
+    rate = "{:.2f}".format(rate)
+    rate = float(rate)
+    cd = CurrencyCodes()
+
+    symbol = cd.get_symbol(dest_curr)
+    return rate, symbol
 
 
 def load_model():
