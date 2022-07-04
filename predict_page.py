@@ -1,6 +1,9 @@
 import streamlit as st
 import numpy as np
 import pickle
+from curr_exchange import curr_exchanger
+import locale
+
 
 
 def load_model():
@@ -39,11 +42,16 @@ def show_predict():
                 "Switzerland",
                 "Norway" )
 
+    currencies = ("EUR","GBP","DKK","USD","INR","CAD","JPY","BRL","AUD","PLN","RUB","SEK","TRY","CHF","NOK","ZAR","CZK",
+                  "HUF")
+
     education = ("Master's Degree", 'Bachelor’s Degree', 'Post grad',"Less than a bachelors")
 
     country = st.selectbox("Country",countries)
     education = st.selectbox("Educational Level",education)
     experience = st.slider("Years of experience",0,30,3)
+    currency =  st.selectbox("Which currency would you like to see the salary in?",currencies)
+
 
     ok = st.button("Calculate Salary")
 
@@ -53,19 +61,23 @@ def show_predict():
         x[:,1] = le_e.transform(x[:,1])
         x=x.astype(float)
 
-        salary = (regressor_loaded.predict(x))
-        st.subheader(f"Estimated yearly salary : $ {salary[0]:.2f}")
+        salary = (regressor_loaded.predict(x))[0]
 
-        try :
-            from api_request import curr_converter
+        if currency == "USD" :
+            st.subheader(f"Estimated yearly salary : $ {salary:.2f}")
 
-            rate,status_code = curr_converter()
-            if status_code == 200:
-                sal = salary[0] * rate
-                st.subheader(f"Salary converted to INR as of today : {sal:.2f}")
+        else:
+            rate,symbol = curr_exchanger("USD",currency)
 
-            else :
-                pass
-        except :
-            pass
+            salary = salary.astype(float)
+            final_salary = salary * rate
+
+            st.subheader(f"Estimated yearly salary : {symbol} {final_salary:,.2f}")
+
+
+
+
+
+
+
 

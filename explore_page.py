@@ -73,8 +73,8 @@ def show_explore():
 
     st.write("""
 
-             - USA, India and Germany constituted to about 50% of the Stack Overflow users taking this survey in 2021.
-             - Brazil is the only country from the South American continent to be in the top 20 countries.
+             - ##### USA, India and Germany constituted to about 50% of the Stack Overflow users taking this survey in 2021.
+             - ##### Brazil is the only country from the South American continent to be in the top 20 countries.
 
 
              """)
@@ -94,9 +94,9 @@ def show_explore():
 
     st.write("""
 
-            - USA, Israel and Switzerland are the only countries where the mean salary is above 100,000 dollars in 
-              2021.
-            - Brazil, India and Turkey have the lowest mean salaries in 2021.
+            - #####  USA, Israel and Switzerland are the only countries where the mean salary is above 100,000 dollars in 
+               ##### 2021.
+            - #####  Brazil, India and Turkey have the lowest mean salaries in 2021.
 
 
                  """)
@@ -110,9 +110,9 @@ def show_explore():
 
     st.write("""
 
-            - The plot seems more or less linear up to the 35 years of experience 
-              point after which the salary fluctuates to a great extent.
-            - Salaries after 45 years of experience show a drop, possibly indicating retirement.
+            - #####  The plot seems more or less linear up to the 35 years of experience 
+               ##### point after which the salary fluctuates to a great extent.
+            - #####  Salaries after 45 years of experience show a drop, possibly indicating retirement.
 
 
                  """)
@@ -129,8 +129,8 @@ def show_explore():
 
     st.write("""
 
-           - Highest median Salary is of 110,000 US dollars in the USA.
-           - Lowest Median Salary is seen in India of 12,000 US dollars.
+           - #####  Highest median Salary is of 110,000 US dollars in the USA.
+           - #####  Lowest Median Salary is seen in India of 12,000 US dollars.
 
 
                      """)
@@ -147,11 +147,11 @@ def show_explore():
     st.write("""### Mean Salary for various Sexual orientations""")
     st.write("""
 
-             - Users under the category of Gay or Lesbian as their Sexual orientation have the highest mean 
-               salary of about 78,000 USD annually.
-             - Lowest mean salary of 54,800 USD is seen for the category of Asexual users.
-             - It must be noted that the number of users from each category who took this survey may largely 
-               affect the mean salaries. (Pie chart below demonstrates the point.)
+             - #####  Users under the category of Gay or Lesbian as their Sexual orientation have the highest mean 
+               ##### salary of about 78,000 USD annually.
+             - ##### Lowest mean salary of 54,800 USD is seen for the category of Asexual users.
+             - ##### It must be noted that the number of users from each category who took this survey may largely 
+               ##### affect the mean salaries. (Pie chart below demonstrates the point.)
 
 
                      """)
@@ -163,7 +163,7 @@ def show_explore():
     st.write("""### Number of users across sexual orientations""")
     st.write("""
 
-             - Almost 90% of the users who took the survey fall under the category of Man.
+             - #####  Almost 90% of the users who took the survey fall under the category of Man.
                      
 
 
@@ -176,7 +176,7 @@ def show_explore():
     st.write("""### Mean Salary for Age groups""")
     st.write("""
 
-            - The age group of 55-65 earns the highest mean salary of more than 114,000 USD per year. 
+            -  #####  The age group of 55-65 earns the highest mean salary of more than 114,000 USD per year. 
                      
 
 
@@ -194,10 +194,10 @@ def show_explore():
     st.write("""### Total money earned vs Age group and Genders.""")
     st.write("""
 
-            - The group of 25-30 year old men have earned almost 2.2 Billion USD from 2018 - 2021, 
-              which is the highest.
-            - Even though the age group of 55-60 has the highest mean salary, this group has earned a total
-              of less than half a billion USD from 2018-2021.  
+            - #####  The group of 25-30 year old men have earned almost 2.2 Billion USD from 2018 - 2021, 
+               ##### which is the highest.
+            - #####  Even though the age group of 55-60 has the highest mean salary, this group has earned a total
+               ##### of less than half a billion USD from 2018-2021.  
 
 
 
@@ -213,9 +213,9 @@ def show_explore():
     st.write("""### Coutry-wise and Educational level-wise mean salaries. """)
     st.write("""
 
-            - Users from the USA with a Doctorate have the highest mean salary of about 146,000 USD.  
-            - Users from USA who have an Education of below graduation, earn almost 3 times more than
-              users with a Doctorate degree from India,Mexico and Ukraine. 
+            - #####  Users from the USA with a Doctorate have the highest mean salary of about 146,000 USD.  
+            - #####  Users from USA who have an Education of below graduation, earn almost 3 times more than
+               ##### users with a Doctorate degree from India,Mexico and Ukraine. 
                             
                          
 
@@ -237,10 +237,10 @@ def show_explore():
     st.write("""### Mean Salaries of Genders with different Employment status""")
     st.write("""
 
-           - Mean salary of Females who are not employed is almost 3000 USD more than the mean salary
-             of female users who are employed full time.
-           - It is difficult to draw any inference on the salaries of users who are retired, as there 
-             are only male users who are retired and have input their salary details.
+           - #####  Mean salary of Females who are not employed is almost 3000 USD more than the mean salary
+              ##### of female users who are employed full time.
+           - #####  It is difficult to draw any inference on the salaries of users who are retired, as there 
+              ##### are only male users who are retired and have input their salary details.
 
 
                              """)
@@ -261,9 +261,9 @@ def show_explore():
 
     st.write("""
 
-             - Almost 92% of the users have been men.
-             - This is to be kept in mind while considering other gender based inferences drawn 
-               from the study.
+             - #####  Almost 92% of the users have been men.
+             - #####  This is to be kept in mind while considering other gender based inferences drawn 
+                ##### from the study.
 
 
                                  """)
@@ -274,23 +274,26 @@ def show_explore():
 
 
 
-    st.write("""### Word Cloud of Languages that the users have to use currently
+    st.write("""### WordClouds
      
      """)
 
     st.write("""
 
-            - Size of the word in the below Wordclouds correspond to the number of times 
-              that word was used.
-            - It can be seen that Javascript, Python, HTML, CSS and SQL remain to be the top
-              programming languages that users are currently working with or would like to work with
-              in the future.
+            - #####  Size of the word in the below Wordclouds correspond to the number of times 
+               ##### that word was used.
+            - #####  It can be seen that Javascript, Python, HTML, CSS and SQL remain to be the top
+               ##### programming languages that users are currently working with or would like to work with
+               ##### in the future.
                                
 
 
 
                                      """)
 
+    st.write("""#### Word Cloud of Languages that the users have to use currently
+
+         """)
     ##Wordcloud
     have_text = " ".join(df1['lang_have'])
     want_text = " ".join(df1['lang_want'])
@@ -301,7 +304,7 @@ def show_explore():
     plt.axis("off")
     st.pyplot(fig)
 
-    st.write("""### Word Cloud of Languages that the users want to use in the future
+    st.write("""#### Word Cloud of Languages that the users want to use in the future
     
     """)
 
@@ -316,9 +319,10 @@ def show_explore():
 
     st.write("""
 
-            - Below is the highly interactive and informative Plotly Sunburst object.
-            - The path from center in the order of Year,Country,Employment status and finally the education level.
-            - The color scale of the Sunburst chart corresponds to mean salary in USD.                    
+            - #####  Below is the highly interactive and informative Plotly Sunburst object.
+               ##### (Click and hover for specific insights.)
+            - #####  The path from center in the order of Year,Country,Employment status and finally the education level.
+            - #####  The color scale of the Sunburst chart corresponds to mean salary in USD.                    
 
 
 
@@ -328,8 +332,12 @@ def show_explore():
 
     ## SUNBURST
     sun = df11.groupby(['year','Employment',"Country","EdLevel"], as_index=False).agg({'salary': pd.Series.mean})
-    fig = px.sunburst(data_frame=sun,path=['year',"Country",'Employment',"EdLevel"], names='year',values='salary',color='salary')
+    fig = px.sunburst(data_frame=sun,path=['year',"Country",'Employment',"EdLevel"], names='year',values='salary',color='salary'
+                      ,color_continuous_scale='RdBu',width=1000,height=650)
+    fig.update_traces(outsidetextfont_family= "Arial",insidetextfont_family="Arial",hoverlabel_font_size=
+                        15, selector = dict(type='sunburst'))
     fig.update_layout(coloraxis_showscale = True)
+
     st.plotly_chart(fig)
 
 

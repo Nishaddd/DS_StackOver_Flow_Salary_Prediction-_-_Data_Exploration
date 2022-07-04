@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DS_StackOver_Flow_Salary_Prediction-_-_Data_Exploration" vcs="Git" />
   </component>
 </project>
